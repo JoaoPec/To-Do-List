@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+
+    <h1>Welcome to your To-Do-List</h1>
+    <div class="container">
+        <div class="input">
+            <form action="/add" method="post">
+                <input type="text" name="task" placeholder="Write your task here" id="taskInput">
+                <button type="submit"><img src="assets/submit.png" alt="Submit"></button>
+            </form>
+        </div>
+        <div class="tasks">
+
+            <% if (locals.tasks) { %>
+                <% for (let i=0; i < locals.tasks.length; i++) { %>
+                    <div class="task" onclick="toggleTask(this)">
+                        <%= locals.tasks[i] %>
+                    </div>
+                    <% } %>
+                        <% } %>
+
+        </div>
+    </div>
+
+    <script>
+        function toggleTask(task) {
+            task.classList.toggle("completed");
+        }
+    </script>
+
+</body>
+
+</html>
