@@ -15,7 +15,7 @@
         <div class="input">
             <form action="/add" method="post">
                 <input type="text" name="task" placeholder="Write your task here" id="taskInput">
-                <button type="submit"><img src="assets/submit.png" alt="Submit"></button>
+                <button type="submit"><img src="" alt="">Submit</button>
             </form>
         </div>
         <div class="tasks">
@@ -24,6 +24,7 @@
                 <% for (let i=0; i < locals.tasks.length; i++) { %>
                     <div class="task" onclick="toggleTask(this)">
                         <%= locals.tasks[i] %>
+                            <button class="dele" onclick="deleteTask(this)">Delete</button>
                     </div>
                     <% } %>
                         <% } %>
@@ -34,6 +35,11 @@
     <script>
         function toggleTask(task) {
             task.classList.toggle("completed");
+        }
+
+        function deleteTask(button) {
+            const taskElement = button.parentElement;
+            taskElement.remove();
         }
     </script>
 
