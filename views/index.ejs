@@ -11,42 +11,44 @@
 <body>
 
     <h1>Welcome to your To-Do-List</h1>
-    <div class="container">
-        <div class="input">
-            <form action="/add" method="post">
-                <input type="text" name="task" placeholder="Write your task here" id="taskInput">
-                <button type="submit"><img src="" alt="">Submit</button>
-            </form>
-        </div>
-        <div class="tasks">
+    <% if (listTitle) { %>
+        <h2>
+            <%= listTitle %>
+        </h2>
+        <% } %>
+            <div class="container">
+                <div class="input">
+                    <form action="/" method="post">
+                        <input type="text" name="task" placeholder="Write your task here" id="taskInput">
+                        <button type="submit" name="list" value="<%= listTitle %>"><img src="" alt="">Submit</button>
+                    </form>
+                </div>
+                <div class="tasks">
+                    <% if (items && items.length) { %>
+                        <% for (let i=0; i < items.length; i++) { %>
+                            <div class="task" onclick="toggleTask(this)">
+                                <%= items[i].name %>
+                                    <form action="/delete" method="post">
+                                        <input type="hidden" name="taskId" value="<%= items[i]._id %>">
+                                        <button type="submit" class="delete">Delete</button>
+                                        <input type="hidden" name="listName" value="<%= listTitle  %> " id="">
+                                    </form>
+                            </div>
+                            <% } %>
+                                <% } %>
+                </div>
+            </div>
 
-            <% if (items && size) { %>
-                <% for (let i=0; i < size; i++) { %>
-                    <div class="task" onclick="toggleTask(this)">
-                        <%= items[i].name%>
-                                <form action="/delete" method="post">
-                                    <input type="hidden" name="taskId" value="<%= items[i]._id %>">
-                                    <button type="submit" class="delete">Delete</button>
-                                </form>
+            <script>
+                function toggleTask(task) {
+                    task.classList.toggle("completed");
+                }
 
-                    </div>
-                    <% } %>
-                        <% } %>
-
-
-        </div>
-    </div>
-
-    <script>
-        function toggleTask(task) {
-            task.classList.toggle("completed");
-        }
-
-        function deleteTask(button) {
-            const taskElement = button.parentElement;
-            taskElement.remove();
-        }
-    </script>
+                function deleteTask(button) {
+                    const taskElement = button.parentElement;
+                    taskElement.remove();
+                }
+            </script>
 
 </body>
 
