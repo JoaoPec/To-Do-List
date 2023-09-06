@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
+const _ = require("lodash");
 const PORT = 3000;
 
 
@@ -77,7 +78,7 @@ app.get("/", async (req, res) => {
 
 app.get("/:customList", async (req, res) => {
 
-    const customList = req.params.customList;
+    const customList = _.capitalize(req.params.customList);
 
     try {
         const list = await List.findOne({ name: customList });
