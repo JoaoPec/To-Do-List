@@ -20,14 +20,19 @@
         </div>
         <div class="tasks">
 
-            <% if (locals.tasks) { %>
-                <% for (let i=0; i < locals.tasks.length; i++) { %>
+            <% if (items && size) { %>
+                <% for (let i=0; i < size; i++) { %>
                     <div class="task" onclick="toggleTask(this)">
-                        <%= locals.tasks[i] %>
-                            <button class="dele" onclick="deleteTask(this)">Delete</button>
+                        <%= items[i].name%>
+                                <form action="/delete" method="post">
+                                    <input type="hidden" name="taskId" value="<%= items[i]._id %>">
+                                    <button type="submit" class="delete">Delete</button>
+                                </form>
+
                     </div>
                     <% } %>
                         <% } %>
+
 
         </div>
     </div>
