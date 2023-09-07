@@ -13,6 +13,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     margin-top: 100px;
     background-color: #272829;
+    border-radius: 1rem;
 }
 
 h1 {
@@ -30,6 +31,7 @@ h2{
     display: flex;
     margin-bottom: 20px;
     justify-content: center;
+    border-radius: 6rem;
 }
 
 input[type="text"] {

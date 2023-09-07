@@ -3,13 +3,15 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 const _ = require("lodash");
+require("dotenv").config();
 const PORT = 3000;
 
+const password = process.env.PASSWORD;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb://localhost:27017/todolistDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://JoaoPec:"+password+".009@to-do-list.qwm4oop.mongodb.net/todolistDB", { useNewUrlParser: true })
 
 const itemsSchema = {
     name: {
@@ -165,12 +167,12 @@ app.post("/delete", (req, res) => {
         res.redirect("/");
     } else {
         List.findOneAndUpdate({ name: list }, { $pull: { items: { _id: id } } })
-            .then((foundList)=> {
+            .then((foundList) => {
                 console.log("Successfully deleted the item from the database");
-        }).catch((err) => {
-            console.log(err);
-        });
-       
+            }).catch((err) => {
+                console.log(err);
+            });
+
         res.redirect("/" + list)
     }
 });
