@@ -3,11 +3,13 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const serverless = require("serverless-http");
 require("dotenv").config();
 const PORT = 3000;
 
 const password = process.env.PASSWORD;
 
+module.exports.handler = serverless(app);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
