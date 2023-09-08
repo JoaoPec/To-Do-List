@@ -10,10 +10,11 @@ const PORT = 3000;
 const password = process.env.PASSWORD;
 
 module.exports.handler = serverless(app);
+
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb+srv://JoaoPec:"+password+".009@to-do-list.qwm4oop.mongodb.net/todolistDB", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://JoaoPec:"+password+"@to-do-list.qwm4oop.mongodb.net/todolistDB", { useNewUrlParser: true })
 
 const itemsSchema = {
     name: {
@@ -120,7 +121,6 @@ app.post("/", async (req, res) => {
 
             await item.save();
 
-            // Log todos os itens
             console.log("Todos os itens da lista:");
             items.forEach((item) => {
                 console.log(`ID: ${item._id}, Nome: ${item.name}`);
