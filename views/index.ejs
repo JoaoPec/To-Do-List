@@ -20,7 +20,7 @@
                 <div class="input">
                     <form action="/" method="post">
                         <input type="text" name="task" placeholder="Write your task here" id="taskInput">
-                        <button type="submit" name="list" value="<%= listTitle %>"><img src="" alt="">Submit</button>
+                        <button type="submit" class="submit" name="list" value="<%= listTitle %>"><img src="" alt="">Submit</button>
                     </form>
                 </div>
                 <div class="tasks">
@@ -38,7 +38,6 @@
                                 <% } %>
                 </div>
             </div>
-
             <script>
                 function toggleTask(task) {
                     task.classList.toggle("completed");

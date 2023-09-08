@@ -89,3 +89,35 @@ input{
   text-decoration: line-through;
   color: #888;
 }
+
+@media screen  and (max-width: 850px) {
+    .container {
+        margin-top: 20px;
+    }
+    .input {
+        flex-direction: column;
+    }
+    input[type="text"] {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    button {
+        border-radius: 5px;
+    }
+    h1{
+        font-size: 15pt 
+    }
+    h2{
+        font-size: 12pt;
+    }
+    input{
+        width: 320px;
+    }
+    .submit{
+        position: relative;
+        left: 120px;
+        width: 100px;
+    }
+
+}
+    
