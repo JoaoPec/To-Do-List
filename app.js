@@ -11,7 +11,7 @@ const password = process.env.PASSWORD;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect("mongodb+srv://JoaoPec:"+password+"@to-do-list.qwm4oop.mongodb.net/todolistDB", { useNewUrlParser: true })
+mongoose.connect("mongodb+srv://JoaoPec:" + password + "@to-do-list.qwm4oop.mongodb.net/todolistDB", { useNewUrlParser: true })
 
 const itemsSchema = {
     name: {
